@@ -1,0 +1,32 @@
+<div class="flex flex-col items-center justiy-center grow p-4">
+  <h4 class="flex items-center justify-between w-full mb-2 text-2xl">
+    Havi statisztikák
+    <div class="flex items-center gap-1">
+      <button ng-click="prevMonth()" class="text-4xl -mt-1.5 px-3 opacity-60 hover:opacity-100 transition-opacity">&#8249;</button>
+      <span class="text-xl opacity-90">{{monthName}}</span>
+      <button ng-click="nextMonth()" class="text-4xl -mt-1.5 px-3 opacity-60 hover:opacity-100 transition-opacity">&#8250;</button>
+    </div>
+  </h4>
+
+  <div class="flex flex-col w-full">
+    <div class="flex w-full border-b border-slate-500">
+      <div class="text-center text-lg w-1/6">Név</div>
+      <div class="text-center text-lg w-1/6">Órabér</div>
+      <div class="text-center text-lg w-1/6">Dolgozott órák</div>
+      <div class="text-center text-lg w-1/6">Fizetés előleg (HUF)</div>
+      <div class="text-center text-lg w-1/6">Havi fizetés (HUF)</div>
+      <div class="text-center text-lg w-1/6">Végleges fizetés (HUF)</div>
+    </div>
+    <div class="flex w-full py-1 even:bg-slate-700/30" ng-repeat="item in stats">
+      <div class="text-center w-1/6">{{item.name}}</div>
+      <div class="text-center w-1/6">{{item.pricePerHour | currency : '' : false : ''}}</div>
+      <div class="text-center w-1/6">{{item.hours}}</div>
+      <div class="text-center w-1/6">{{item.prepayment | currency : '' : false : ''}}</div>
+      <div class="text-center w-1/6">{{item.salary | currency : '' : false : ''}}</div>
+      <div class="text-center w-1/6">{{item.salary - item.prepayment | currency : '' : false : ''}}</div>
+    </div>
+    <div ng-if="stats.length === 0" class="text-center p-10 opacity-85">
+      Nincs betölthető adat.<br/>Adj hozzá <a href="#!/alkalmazottak" class="text-slate-100/65 hover:text-slate-200 transition-colors">alkalmazottakat</a> és <a href="#!/munkaidok" class="text-slate-100/65 hover:text-slate-200 transition-colors">munkaidőket</a>!
+    </div>
+  </div>
+</div>
