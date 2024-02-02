@@ -24,6 +24,8 @@ npm install
 #### .env
 
 ```dotenv
+# Ez a sablon megtalálható a .env.example fájlban is.
+
 # Backend    -  Port: Ezen fog futni a backend
 PORT=2000
 
@@ -31,7 +33,7 @@ PORT=2000
 DB_HOST=localhost
 DB_USER=root
 DB_PASS=
-DB_NAME=513szoft_munkaidoapp
+DB_NAME=munkaido-app
 ```
 
 #### Indítási parancsok
