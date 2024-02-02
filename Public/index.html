@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hu" ng-app="MunkaidoAPP">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col text-white min-h-screen bg-slate-800">
+  <header class="flex items-center justify-between px-5 py-4 bg-slate-900/25 mb-5">
+    <h2 class="text-2xl">Munkaidő App</h2>
+    <nav class="flex items-center justify-center gap-4">
+      <a class="px-3 py-1 rounded-lg text-lg bg-slate-900/75 hover:bg-slate-900/40 transition-colors" href="#!/">Főoldal</a>
+      <a class="px-3 py-1 rounded-lg text-lg bg-slate-900/75 hover:bg-slate-900/40 transition-colors" href="#!/alkalmazottak">Alkalmazottak</a>
+      <a class="px-3 py-1 rounded-lg text-lg bg-slate-900/75 hover:bg-slate-900/40 transition-colors" href="#!/munkaidok">Munkaidők</a>
+      <a class="px-3 py-1 rounded-lg text-lg bg-slate-900/75 hover:bg-slate-900/40 transition-colors" href="#!/fizeteseloleg">Fizetés előleg</a>
+    </nav>
+  </header>
+  <main class="h-full w-full px-4 grow" ng-view></main>
+  <footer class="flex items-center justify-between px-5 py-4 bg-slate-900/25 mt-5">
+    <div>-</div>
+    <div>-</div>
+  </footer>
+
+  <!-- Assets -->
+  <script src="Assets/js/angular.min.js"></script>
+  <script src="Assets/js/angular-route.min.js"></script>
+  <script src="Assets/js/axios.min.js"></script>
+  <script src="Assets/js/app.js"></script>
+
+  <!-- Controllers -->
+  <script src="Controllers/homeCtrl.js"></script>
+  <script src="Controllers/alkalmazottakCtrl.js"></script>
+  <script src="Controllers/munkaidoCtrl.js"></script>
+  <script src="Controllers/fizeteselolegCtrl.js"></script>
+</body>
+</html>
