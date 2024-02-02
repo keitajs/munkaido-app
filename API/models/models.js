@@ -19,6 +19,7 @@ export const worktimes = db.define('worktimes', {
 export const prepayments = db.define('prepayments', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   month: { type: DataTypes.INTEGER, allowNull: false },
+  day: { type: DataTypes.INTEGER, allowNull: false },
   value: { type: DataTypes.INTEGER, allowNull: false }
 }, { createdAt: false, updatedAt: false });
 

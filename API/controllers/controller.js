@@ -96,8 +96,8 @@ export const getFizeteselolegek = async (req, res) => {
 
 export const createFizeteseloleg = async (req, res) => {
   try {
-    const { month, value, employeeId } = req.body
-    const result = await prepayments.create({ month, value, employeeId })
+    const { month, day, value, employeeId } = req.body
+    const result = await prepayments.create({ month, day, value, employeeId })
     res.send(result)
   } catch (error) {
     console.log(error)
@@ -107,8 +107,8 @@ export const createFizeteseloleg = async (req, res) => {
 
 export const updateFizeteseloleg = async (req, res) => {
   try {
-    const { month, value, employeeId } = req.body
-    const result = await prepayments.update({ month, value, employeeId }, { where: { id: req.params.id } })
+    const { month, value, day, employeeId } = req.body
+    const result = await prepayments.update({ month, day, value, employeeId }, { where: { id: req.params.id } })
     res.send(result)
   } catch (error) {
     console.log(error)

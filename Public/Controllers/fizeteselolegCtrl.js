@@ -1,6 +1,7 @@
 app.controller('fizeteselolegCtrl', function($scope) {
   $scope.employeeId = ''
   $scope.month = ''
+  $scope.day = ''
   $scope.value = ''
   $scope.activeFizeteseloleg = null
   $scope.fizeteselolegek = []
@@ -28,11 +29,12 @@ app.controller('fizeteselolegCtrl', function($scope) {
 
   $scope.updateClick = async () => {
     if (!$scope.employeeId || !$scope.month || !$scope.value) return alert('Adj meg minden adatot!')
+    if (isNaN($scope.day) || $scope.day < 1 || $scope.day > 31) return alert('A nap csak szám lehet 1-től 31-ig!')
     if (isNaN($scope.value)) return alert('A fizetés előleg csak szám lehet!')
 
     if (!$scope.activeFizeteseloleg) {
       try {
-        await axios.post('http://localhost:2000/fizeteseloleg', { employeeId: $scope.employeeId, month: $scope.month, value: $scope.value })
+        await axios.post('http://localhost:2000/fizeteseloleg', { employeeId: $scope.employeeId, month: $scope.month, day: $scope.day, value: $scope.value })
         $scope.$apply()
         alert('Sikeresen felvetted az fizetés előleget!')
         window.location.reload()
@@ -42,7 +44,7 @@ app.controller('fizeteselolegCtrl', function($scope) {
       }
     } else {
       try {
-        await axios.patch(`http://localhost:2000/fizeteseloleg/${$scope.activeFizeteseloleg.id}`, { employeeId: $scope.employeeId, month: $scope.month, value: $scope.value })
+        await axios.patch(`http://localhost:2000/fizeteseloleg/${$scope.activeFizeteseloleg.id}`, { employeeId: $scope.employeeId, month: $scope.month, day: $scope.day, value: $scope.value })
         $scope.$apply()
         alert('Sikeresen módosítotad az fizetés előleget!')
         window.location.reload()
@@ -69,6 +71,7 @@ app.controller('fizeteselolegCtrl', function($scope) {
 
     $scope.employeeId = item.employeeId
     $scope.month = item.month
+    $scope.day = item.day
     $scope.value = item.value
     $scope.activeFizeteseloleg = item
   }
@@ -76,6 +79,7 @@ app.controller('fizeteselolegCtrl', function($scope) {
   $scope.closeUpdate = async () => {
     $scope.employeeId = ''
     $scope.month = ''
+    $scope.day = ''
     $scope.value = ''
     $scope.activeFizeteseloleg = null
   }
